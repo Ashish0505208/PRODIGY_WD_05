@@ -10,7 +10,7 @@ function getWeatherByLatLon(lat, lon, cityName) {
     fetch(weatherUrl)
         .then(response => response.json())
         .then(data => {
-            let humidity = data.hourly ? data.hourly.relative_humidity_2m[0] : "N/A"; // Handle missing humidity
+            let humidity = data.hourly ? data.hourly.relative_humidity_2m[0] : "N/A";
             displayWeather(data.current_weather, cityName, humidity);
         })
         .catch(error => {
@@ -53,7 +53,6 @@ function getUserLocation() {
                 let lat = position.coords.latitude;
                 let lon = position.coords.longitude;
 
-                // Using Nominatim for Reverse Geocoding (No API Key Required)
                 fetch(`https://nominatim.openstreetmap.org/reverse?format=json&lat=${lat}&lon=${lon}`)
                     .then(response => response.json())
                     .then(data => {
